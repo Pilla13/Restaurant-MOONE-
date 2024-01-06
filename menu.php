@@ -48,14 +48,15 @@
 
         <section class = "rest_menu">
         <h2>Основное меню:</h2>
+        <h3>Лапша</h3>
             <div class = "main_menu__container">
             <?php
-            $query_create_view_main = "CREATE VIEW view_main_dishes AS SELECT * FROM `Основные блюда`";
-            mysqli_query($link, $query_create_view_main);
+            $query_create_view_main_noodle = "CREATE VIEW view_main_dishes_noodle AS SELECT * FROM `Основные блюда` WHERE `Вид` = 'Лапша'";
+            mysqli_query($link, $query_create_view_main_noodle);
 
-            $query_select_view_main = "SELECT * FROM view_main_dishes";
-            $result_view_main = mysqli_query($link, $query_select_view_main);
-            while ($row = mysqli_fetch_assoc($result_view_main)) {
+            $query_select_view_main_noodle = "SELECT * FROM view_main_dishes_noodle";
+            $result_view_main_noodle = mysqli_query($link, $query_select_view_main_noodle);
+            while ($row = mysqli_fetch_assoc($result_view_main_noodle)) {
                 ?>
                 <div class="product__block">
                     <img src="/dishes/<?php echo $row['Номер изображения'] ?>.png" alt="Img">
@@ -68,8 +69,60 @@
             <?php
             }
             
-            $query_drop_view_main = "DROP VIEW IF EXISTS view_main_dishes";
-            mysqli_query($link, $query_drop_view_main);
+            $query_drop_view_main_noodle = "DROP VIEW IF EXISTS view_main_dishes_noodle";
+            mysqli_query($link, $query_drop_view_main_noodle);
+            ?>
+            </div>
+
+            <h3>Супы</h3>
+            <div class = "main_menu__container">
+            <?php
+            $query_create_view_main_soup = "CREATE VIEW view_main_dishes_soup AS SELECT * FROM `Основные блюда` WHERE `Вид` = 'Суп'";
+            mysqli_query($link, $query_create_view_main_soup);
+
+            $query_select_view_main_soup = "SELECT * FROM view_main_dishes_soup";
+            $result_view_main_soup = mysqli_query($link, $query_select_view_main_soup);
+            while ($row = mysqli_fetch_assoc($result_view_main_soup)) {
+                ?>
+                <div class="product__block">
+                    <img src="/dishes/<?php echo $row['Номер изображения'] ?>.png" alt="Img">
+                    <h4><?php echo $row['Название'] ?></h4>
+                    <div class="dish__text">
+                        <p class="dish__name"><?php echo $row['Цена'] ?> руб.</p>
+                        <p class="dish__gr"><?php echo $row['Объем порции'] ?> гр.</p>
+                    </div>
+                </div>
+            <?php
+            }
+            
+            $query_drop_view_main_soup = "DROP VIEW IF EXISTS view_main_dishes_soup";
+            mysqli_query($link, $query_drop_view_main_soup);
+            ?>
+            </div>
+
+            <h3>Суши и роллы</h3>
+            <div class = "main_menu__container">
+            <?php
+            $query_create_view_main_sushi = "CREATE VIEW view_main_dishes_sushi AS SELECT * FROM `Основные блюда` WHERE `Вид` = 'Суши и роллы'";
+            mysqli_query($link, $query_create_view_main_sushi);
+
+            $query_select_view_main_sushi = "SELECT * FROM view_main_dishes_sushi";
+            $result_view_main_sushi = mysqli_query($link, $query_select_view_main_sushi);
+            while ($row = mysqli_fetch_assoc($result_view_main_sushi)) {
+                ?>
+                <div class="product__block">
+                    <img src="/dishes/<?php echo $row['Номер изображения'] ?>.png" alt="Img">
+                    <h4><?php echo $row['Название'] ?></h4>
+                    <div class="dish__text">
+                        <p class="dish__name"><?php echo $row['Цена'] ?> руб.</p>
+                        <p class="dish__gr"><?php echo $row['Объем порции'] ?> гр.</p>
+                    </div>
+                </div>
+            <?php
+            }
+            
+            $query_drop_view_main_sushi = "DROP VIEW IF EXISTS view_main_dishes_sushi";
+            mysqli_query($link, $query_drop_view_main_sushi);
             ?>
             </div>
 
