@@ -100,6 +100,32 @@
             ?>
             </div>
 
+            <h3>Донбури</h3>
+            <div class = "main_menu__container">
+            <?php
+            $query_create_view_main_donburi = "CREATE VIEW view_main_dishes_donburi AS SELECT * FROM `Основные блюда` WHERE `Вид` = 'донбури'";
+            mysqli_query($link, $query_create_view_main_donburi);
+
+            $query_select_view_main_donburi = "SELECT * FROM view_main_dishes_donburi";
+            $result_view_main_donburi = mysqli_query($link, $query_select_view_main_donburi);
+            while ($row = mysqli_fetch_assoc($result_view_main_donburi)) {
+                ?>
+                <div class="product__block">
+                    <img src="/dishes/<?php echo $row['Номер изображения'] ?>.png" alt="Img">
+                    <h4><?php echo $row['Название'] ?></h4>
+                    <div class="dish__text">
+                        <p class="dish__name"><?php echo $row['Цена'] ?> руб.</p>
+                        <p class="dish__gr"><?php echo $row['Объем порции'] ?> гр.</p>
+                    </div>
+                </div>
+            <?php
+            }
+            
+            $query_drop_view_main_donburi = "DROP VIEW IF EXISTS view_main_dishes_donburi";
+            mysqli_query($link, $query_drop_view_main_donburi);
+            ?>
+            </div>
+
             <h3>Суши и роллы</h3>
             <div class = "main_menu__container">
             <?php
