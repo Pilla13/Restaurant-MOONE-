@@ -167,7 +167,7 @@
                         <h4><?php echo $row['Название'] ?></h4>
                         <div class="dish__text">
                             <p class="dish__name"><?php echo $row['Цена'] ?> руб.</p>
-                            <p class="dish__gr"><?php echo $row['Объем порции'] ?> гр.</p>
+                            <p class="dish__gr"><?php echo $row['Объем'] ?> гр.</p>
                         </div>
                     </div>
                 <?php
